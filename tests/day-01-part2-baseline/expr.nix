@@ -5,10 +5,10 @@
   inherit (inputs.nixpkgs) system lib;
   inherit (inputs.aoc.${system}.code) challenges;
 
-  runnable = lib.getExe challenges.day-01-part1;
+  runnable = lib.getExe challenges.day-01-part2;
   fixtures = ./__fixtures;
 
-  command = nixpkgs.runCommand "day-01-baseline" {} ''
+  command = nixpkgs.runCommand "day-01-part2-baseline" {} ''
     ${runnable} < ${fixtures}/example.txt > $out
     '';
 in

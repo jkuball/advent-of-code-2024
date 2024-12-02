@@ -18,9 +18,10 @@ You can use the [standard](https://github.com/divnix/std) cli to explore this re
 
 ## Overview
 
-| Day | Language | Status Part 1 | Status Part 2 |
-| --- | -------- | ------------- | ------------- |
-| 01  | bash     | `DONE`        | `OPEN`        |
-| 02  |          | `OPEN`        | `LOCK`        |
-| 03  |          | `TBD`         | `TBD`         |
+| Day         | Status Part 1 | Status Part 2 | Language                            |
+| ----------- | ------------- | ------------- | ----------------------------------- |
+| 01.12.2024  | ⭐ `DONE`     | ⭐ `DONE`     | bash (`pkgs.writeShellApplication`) |
+| 02.12.2024  | `OPEN`        | `LOCK`        |                                     |
+| 03.12.2024  | `TBD`         | `TBD`         |                                     |
+
 

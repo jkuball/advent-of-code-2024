@@ -8,7 +8,7 @@
   runnable = lib.getExe challenges.day-01-part1;
   fixtures = ./__fixtures;
 
-  command = nixpkgs.runCommand "day-01-challenge" {} ''
+  command = nixpkgs.runCommand "day-01-part1-challenge" {} ''
     ${runnable} < ${fixtures}/example.txt > $out
     '';
 in
