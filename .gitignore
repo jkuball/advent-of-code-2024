@@ -1,0 +1,6 @@
+# std
+.cache/
+.data/
+
+# nixago: ignore-linked-files
+/treefmt.toml
