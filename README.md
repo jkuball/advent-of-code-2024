@@ -34,7 +34,7 @@ You can use the [standard](https://github.com/divnix/std) cli to explore this re
 | Day         | Status Part 1 | Status Part 2 | Language                            |
 | ----------- | ------------- | ------------- | ----------------------------------- |
 | 01.12.2024  | ⭐ `DONE`     | ⭐ `DONE`     | bash (`pkgs.writeShellApplication`) |
-| 02.12.2024  | 🔜 `OPEN`     | 🔒 `LOCK`     |                                     |
+| 02.12.2024  | ⭐ `DONE`     | ⭐ `DONE`     | fish (`pkgs.writers.writeFishBin`)  |
 | 03.12.2024  | 🔜 `OPEN`     | 🔒 `LOCK`     |                                     |
 | 04.12.2024  | ❓ `TBD`      | ❓ `TBD`      |                                     |
 
@@ -56,7 +56,11 @@ $ nix flake update --flake ./cells/tests
 $ std //tests/checks/snapshots:check
 ✔ day-01-part1-baseline
 ✔ day-01-part1-challenge
+✔ day-02-part2-baseline
 ✔ day-01-part2-baseline
 ✔ day-01-part2-challenge
-All 4 tests succeeded
+✔ day-02-part2-challenge
+✔ day-02-part1-baseline
+✔ day-02-part1-challenge
+All 8 tests succeeded
 ```
