@@ -26,11 +26,11 @@ in {
     data = {
       name = "Deploy to GitHub Pages";
       on.push.branches = ["main"];
-      permission.contents = "write";
 
       jobs.deploy = {
         runs-on = "ubuntu-latest";
         concurrency.group = "\${{ github.workflow }}-\${{ github.ref }}";
+        permission.contents = "write";
         steps = [
           { uses = "actions/checkout@v4"; }
           { uses = "nixbuild/nix-quick-install-action@v29"; }

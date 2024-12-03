@@ -2,6 +2,8 @@ jobs:
   deploy:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+    permission:
+      contents: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -17,5 +19,3 @@ name: Deploy to GitHub Pages
   push:
     branches:
     - main
-permission:
-  contents: write
