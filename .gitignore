@@ -5,5 +5,11 @@ result
 .cache/
 .data/
 
+# mdbook
+docs/book/
+docs/cells/
+docs/index.html
+docs/README.md
+
 # nixago: ignore-linked-files
 /treefmt.toml

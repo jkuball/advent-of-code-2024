@@ -1,0 +1,8 @@
+[book]
+language = "en"
+multilingual = false
+src = "docs"
+title = "Advent of Code 2024 - A report."
+
+[build]
+build-dir = "docs/book"

@@ -11,4 +11,12 @@ in {
       treefmt
     ];
   };
+
+  book = mkShell {
+    name = "AoC 2024: Book";
+
+    nixago = with cell.configs; [
+      mdbook
+    ];
+  };
 }
