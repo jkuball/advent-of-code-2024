@@ -2,7 +2,7 @@ jobs:
   deploy:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-    permission:
+    permissions:
       contents: write
     runs-on: ubuntu-latest
     steps:

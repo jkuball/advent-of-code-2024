@@ -30,7 +30,7 @@ in {
       jobs.deploy = {
         runs-on = "ubuntu-latest";
         concurrency.group = "\${{ github.workflow }}-\${{ github.ref }}";
-        permission.contents = "write";
+        permissions.contents = "write";
         steps = [
           { uses = "actions/checkout@v4"; }
           { uses = "nixbuild/nix-quick-install-action@v29"; }
