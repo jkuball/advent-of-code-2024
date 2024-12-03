@@ -26,6 +26,7 @@ in {
     data = {
       name = "Deploy to GitHub Pages";
       on.push.branches = ["main"];
+      permission.contents = "write";
 
       jobs.deploy = {
         runs-on = "ubuntu-latest";
