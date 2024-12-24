@@ -10,10 +10,11 @@ jobs:
     - uses: nixbuild/nix-quick-install-action@v29
     - run: nix develop .#book -c mdbook build ./.
     - if: ${{ github.ref == 'refs/heads/main' }}
-      uses: peaceiris/actions-gh-pages@v4
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/book
+        path: ./docs/book/
+    - if: ${{ github.ref == 'refs/heads/main' }}
+      uses: actions/deploy-pages@v4
 name: Deploy to GitHub Pages
 'on':
   push:

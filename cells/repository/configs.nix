@@ -37,12 +37,13 @@ in
           { uses = "nixbuild/nix-quick-install-action@v29"; }
           { run = "nix develop .#book -c mdbook build ./."; }
           {
-            uses = "peaceiris/actions-gh-pages@v4";
             "if" = "\${{ github.ref == 'refs/heads/main' }}";
-            "with" = {
-              "github_token" = "\${{ secrets.GITHUB_TOKEN }}";
-              "publish_dir" = "./docs/book";
-            };
+            uses = "actions/upload-pages-artifact@v3";
+            "with".path = "./docs/book/";
+          }
+          {
+            "if" = "\${{ github.ref == 'refs/heads/main' }}";
+            uses = "actions/deploy-pages@v4";
           }
         ];
       };
