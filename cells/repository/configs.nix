@@ -31,7 +31,10 @@ in
       jobs.deploy = {
         runs-on = "ubuntu-latest";
         concurrency.group = "\${{ github.workflow }}-\${{ github.ref }}";
-        permissions.contents = "write";
+        permissions = {
+          id-token = "write";
+          pages = "write";
+        };
         steps = [
           { uses = "actions/checkout@v4"; }
           { uses = "nixbuild/nix-quick-install-action@v29"; }
