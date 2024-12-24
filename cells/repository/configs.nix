@@ -35,6 +35,10 @@ in
           id-token = "write";
           pages = "write";
         };
+        environment = {
+          name = "github-pages";
+          url = "\${{ steps.deployment.outputs.page_url }}";
+        };
         steps = [
           { uses = "actions/checkout@v4"; }
           { uses = "nixbuild/nix-quick-install-action@v29"; }
@@ -46,6 +50,7 @@ in
           }
           {
             "if" = "\${{ github.ref == 'refs/heads/main' }}";
+            id = "deployment";
             uses = "actions/deploy-pages@v4";
           }
         ];
