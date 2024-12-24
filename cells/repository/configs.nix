@@ -1,21 +1,22 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs
+, cell
+}:
+let
   inherit (inputs.std.lib.dev) mkNixago;
   inherit (cell.nixpkgs) pkgs;
   inherit (pkgs) lib;
-in {
+in
+{
   treefmt = mkNixago {
     output = "treefmt.toml";
 
     commands = [
-      {package = with pkgs; treefmt;}
+      { package = with pkgs; treefmt; }
     ];
 
     data.formatter.nix = {
-      command = lib.getExe (with pkgs; alejandra);
-      includes = ["*.nix"];
+      command = lib.getExe (with pkgs; nixpkgs-fmt);
+      includes = [ "*.nix" ];
     };
   };
 
@@ -25,7 +26,7 @@ in {
 
     data = {
       name = "Deploy to GitHub Pages";
-      on.push.branches = ["main"];
+      on.push.branches = [ "main" ];
 
       jobs.deploy = {
         runs-on = "ubuntu-latest";

@@ -1,25 +1,28 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs
+, cell
+,
+}:
+let
   inherit (inputs) nixpkgs namaka self;
   inherit (inputs.nixpkgs) lib;
 
-  inputs' = builtins.removeAttrs inputs ["self"];
+  inputs' = builtins.removeAttrs inputs [ "self" ];
 
-  aoc24.mkTest = {
-    challenge,
-    fixture,
-    ...
-  }: let
-    runnable = lib.getExe challenge;
+  aoc24.mkTest =
+    { challenge
+    , fixture
+    , ...
+    }:
+    let
+      runnable = lib.getExe challenge;
 
-    command = nixpkgs.runCommand "${challenge}-${fixture}" {} ''
-      ${runnable} < ${fixture} > $out
-    '';
-  in
+      command = nixpkgs.runCommand "${challenge}-${fixture}" { } ''
+        ${runnable} < ${fixture} > $out
+      '';
+    in
     builtins.readFile "${command}";
-in {
+in
+{
   snapshots = {
     check = namaka.lib.load {
       src = self + /tests;

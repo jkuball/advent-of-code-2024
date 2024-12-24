@@ -1,9 +1,11 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs
+, cell
+,
+}:
+let
   inherit (inputs) nixpkgs;
-in {
+in
+{
   pkgs = import nixpkgs {
     inherit (nixpkgs) system;
   };

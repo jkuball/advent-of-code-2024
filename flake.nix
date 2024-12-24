@@ -1,31 +1,32 @@
 {
   description = "Advent of Code 2024 in standard nix.";
 
-  outputs = {
-    self,
-    std,
-    ...
-  } @ inputs:
-    std.growOn {
-      inherit inputs;
-      cellsFrom = ./cells;
-      cellBlocks = with std.blockTypes; [
-        (devshells "devshells")
-        (nixago "configs")
-        (pkgs "nixpkgs")
+  outputs =
+    { self
+    , std
+    , ...
+    } @ inputs:
+    std.growOn
+      {
+        inherit inputs;
+        cellsFrom = ./cells;
+        cellBlocks = with std.blockTypes; [
+          (devshells "devshells")
+          (nixago "configs")
+          (pkgs "nixpkgs")
 
-        (namaka "checks")
-        (runnables "code")
-        (runnables "challenges")
-      ];
-    }
-    {
-      devShells = std.harvest self ["repository" "devshells"];
-      packages = std.harvest self ["code" "challenges"];
+          (namaka "checks")
+          (runnables "code")
+          (runnables "challenges")
+        ];
+      }
+      {
+        devShells = std.harvest self [ "repository" "devshells" ];
+        packages = std.harvest self [ "code" "challenges" ];
 
-      # TODO: this gets to problems with `nix flake show`.
-      # checks = std.harvest self ["tests" "checks" "snapshots" "check"];
-    };
+        # TODO: this gets to problems with `nix flake show`.
+        # checks = std.harvest self ["tests" "checks" "snapshots" "check"];
+      };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

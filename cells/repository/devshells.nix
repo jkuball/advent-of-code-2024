@@ -1,9 +1,11 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs
+, cell
+,
+}:
+let
   inherit (inputs.std.lib.dev) mkShell;
-in {
+in
+{
   default = mkShell {
     name = "AoC 2024";
 
