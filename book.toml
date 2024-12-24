@@ -6,3 +6,11 @@ title = "Advent of Code 2024 - A report."
 
 [build]
 build-dir = "docs/book"
+
+[preprocessor.paisano-preprocessor]
+before = ["links"]
+registry = ".#__std.init"
+
+[[preprocessor.paisano-preprocessor.multi]]
+cell = "code"
+chapter = "show me the code"

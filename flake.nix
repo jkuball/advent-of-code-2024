@@ -41,5 +41,7 @@
 
     namaka.url = "github:nix-community/namaka";
     namaka.inputs.nixpkgs.follows = "nixpkgs";
+
+    mdbook-paisano-preprocessor.url = "github:paisano-nix/mdbook-paisano-preprocessor";
   };
 }

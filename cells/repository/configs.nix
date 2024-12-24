@@ -3,6 +3,7 @@
 }:
 let
   inherit (inputs.std.lib.dev) mkNixago;
+  inherit (inputs.mdbook-paisano-preprocessor.app.package) mdbook-paisano-preprocessor;
   inherit (cell.nixpkgs) pkgs;
   inherit (pkgs) lib;
 in
@@ -62,7 +63,10 @@ in
     output = "book.toml";
     hook.mode = "copy";
 
-    packages = with pkgs; [ mdbook ];
+    packages = with pkgs; [
+      mdbook
+      mdbook-paisano-preprocessor
+    ];
 
     data = {
       book = {
@@ -72,6 +76,17 @@ in
         src = "docs";
       };
       build.build-dir = "docs/book";
+      preprocessor.paisano-preprocessor = {
+        before = [ "links" ];
+        registry = ".#__std.init";
+
+        multi = [
+          {
+            cell = "code";
+            chapter = "show me the code";
+          }
+        ];
+      };
     };
   };
 }
